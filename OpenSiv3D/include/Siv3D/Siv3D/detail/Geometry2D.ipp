@@ -2,8 +2,8 @@
 //
 //	This file is part of the Siv3D Engine.
 //
-//	Copyright (c) 2008-2022 Ryo Suzuki
-//	Copyright (c) 2016-2022 OpenSiv3D Project
+//	Copyright (c) 2008-2023 Ryo Suzuki
+//	Copyright (c) 2016-2023 OpenSiv3D Project
 //
 //	Licensed under the MIT License.
 //
@@ -1732,11 +1732,14 @@ namespace s3d
 		template <class PointType>
 		inline constexpr bool IsClockwise(const PointType& p0, const PointType& p1, const PointType& p2) noexcept
 		{
-			typename PointType::value_type sum = 0;
-			sum += ((p1.x - p0.x) * (p1.y + p0.y));
-			sum += ((p2.x - p1.x) * (p2.y + p1.y));
-			sum += ((p0.x - p2.x) * (p0.y + p2.y));
-			return (sum < 0);
+			if constexpr (std::is_same_v<typename PointType::value_type, int32>)
+			{
+				return (0 < (static_cast<int64>(p1.x - p0.x) * static_cast<int64>(p2.y - p0.y) - static_cast<int64>(p2.x - p0.x) * static_cast<int64>(p1.y - p0.y)));
+			}
+			else
+			{
+				return (0 < ((p1.x - p0.x) * (p2.y - p0.y) - (p2.x - p0.x) * (p1.y - p0.y)));
+			}
 		}
 
 		template <class PointType>

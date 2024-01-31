@@ -2,8 +2,8 @@
 //
 //	This file is part of the Siv3D Engine.
 //
-//	Copyright (c) 2008-2022 Ryo Suzuki
-//	Copyright (c) 2016-2022 OpenSiv3D Project
+//	Copyright (c) 2008-2023 Ryo Suzuki
+//	Copyright (c) 2016-2023 OpenSiv3D Project
 //
 //	Licensed under the MIT License.
 //
@@ -176,6 +176,9 @@
 
 // Disjoint-set (Union-find) | Disjoint-set (Union–find)
 # include <Siv3D/DisjointSet.hpp>
+
+// モートン順序 | Morton order
+# include <Siv3D/Morton.hpp>
 
 //////////////////////////////////////////////////
 //
@@ -474,8 +477,11 @@
 // INI データの読み書き | INI reader/writer
 # include <Siv3D/INI.hpp>
 
-// JSON データの書き出し | JSON reader/writer
+// JSON データの読み書き | JSON reader/writer
 # include <Siv3D/JSON.hpp>
+
+// JSON データの検証 | JSON validation
+# include <Siv3D/JSONValidator.hpp>
 
 // XML ファイルの読み込み | XML parser
 # include <Siv3D/XMLReader.hpp>
@@ -867,6 +873,12 @@
 // クリップボード | Clipboard
 # include <Siv3D/Clipboard.hpp>
 
+// ドライブの種類 | Drive type
+# include <Siv3D/DriveType.hpp>
+
+// ドライブの情報 | Drive information
+# include <Siv3D/DriveInfo.hpp>
+
 //////////////////////////////////////////////////
 //
 //	ネットワーク | Network
@@ -1023,10 +1035,10 @@
 // 文章読み上げオブジェクト | Text to speech object
 # include <Siv3D/Say.hpp>
 
-// KlatTTS のパラメータ | Paramters for KlatTTS
+// KlattTTS のパラメータ | Parameters for KlattTTS
 # include <Siv3D/KlattTTSParameters.hpp>
 
-// Klat 方式による音声読み上げ | Text-to-speech using Klatt's method
+// Klatt 方式による音声読み上げ | Text-to-speech using Klatt's method
 # include <Siv3D/KlattTTS.hpp>
 
 //////////////////////////////////////////////////
@@ -1523,6 +1535,8 @@
 
 # include <Siv3D/DebugCamera3D.hpp>
 
+# include <Siv3D/SimpleFollowCamera3D.hpp>
+
 //////////////////////////////////////////////////
 //
 //	シェーダー | Shader
@@ -1588,9 +1602,14 @@
 // ビデオ・テクスチャ | Video texture
 # include <Siv3D/VideoTexture.hpp>
 
+// レンダーテクスチャ | Render texture
 # include <Siv3D/RenderTexture.hpp>
 
+// マルチサンプルレンダーテクスチャ | Multisample render texture
 # include <Siv3D/MSRenderTexture.hpp>
+
+// 9 パッチテクスチャ | Nine-patch texture
+# include <Siv3D/NinePatch.hpp>
 
 //////////////////////////////////////////////////
 //
@@ -1611,6 +1630,7 @@
 // フォント描画方式 | Font rendering method
 # include <Siv3D/FontMethod.hpp>
 
+// 標準フォントの種類 | Standard font type
 # include <Siv3D/Typeface.hpp>
 
 // フォント | Font
@@ -1667,8 +1687,11 @@
 // 簡易的な GUI | Simple GUI widgets
 # include <Siv3D/SimpleGUI.hpp>
 
-// 簡易的なメニューバー | Simple Menu bar
+// 簡易的なメニューバー | Simple menu bar
 # include <Siv3D/SimpleMenuBar.hpp>
+
+// 簡易的なテーブル | Simple table
+# include <Siv3D/SimpleTable.hpp>
 
 // テキストの入力処理方式 | Text input mode
 # include <Siv3D/TextInputMode.hpp>
@@ -1690,6 +1713,12 @@
 
 // エフェクト | Effect
 # include <Siv3D/Effect.hpp>
+
+// 軌跡 | Trail
+# include <Siv3D/Trail.hpp>
+
+// 軌跡のモーション | Trail motion
+# include <Siv3D/TrailMotion.hpp>
 
 //////////////////////////////////////////////////
 //
@@ -1799,7 +1828,7 @@
 
 //////////////////////////////////////////////////
 //
-//	拡張レンダリングエンジン | Rndering Engine Extension
+//	拡張レンダリングエンジン | Rendering Engine Extension
 //
 //////////////////////////////////////////////////
 
@@ -1808,11 +1837,21 @@
 
 //////////////////////////////////////////////////
 //
-//	トランプカード描画 | Palying Card
+//	トランプカード描画 | Playing Card
 //
 //////////////////////////////////////////////////
 
+// トランプカード描画 | Playing card
 # include <Siv3D/PlayingCard.hpp>
+
+//////////////////////////////////////////////////
+//
+//	OpenAI API | OpenAI API
+//
+//////////////////////////////////////////////////
+
+// OpenAI API | OpenAI API
+# include <Siv3D/OpenAI.hpp>
 
 //////////////////////////////////////////////////
 //
@@ -1837,7 +1876,7 @@
 
 //////////////////////////////////////////////////
 //
-//	実験的なライブラリ | Exmperimental Libraries
+//	実験的なライブラリ | Experimental Libraries
 //
 //////////////////////////////////////////////////
 

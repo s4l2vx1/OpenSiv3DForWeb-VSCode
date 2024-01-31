@@ -2,8 +2,8 @@
 //
 //	This file is part of the Siv3D Engine.
 //
-//	Copyright (c) 2008-2022 Ryo Suzuki
-//	Copyright (c) 2016-2022 OpenSiv3D Project
+//	Copyright (c) 2008-2023 Ryo Suzuki
+//	Copyright (c) 2016-2023 OpenSiv3D Project
 //
 //	Licensed under the MIT License.
 //
@@ -15,6 +15,7 @@
 # include "EngineOptions.hpp"
 # include "AsyncTask.hpp"
 # include "Optional.hpp"
+# include "PredefinedYesNo.hpp"
 
 namespace s3d
 {
@@ -68,6 +69,41 @@ namespace s3d
 		/// @return レンダラーの設定
 		[[nodiscard]]
 		EngineOption::Renderer GetRendererType();
+
+		/// @brief プログラムを実行しているコンピュータの名前を返します。
+		/// @return プログラムを実行しているコンピュータの名前
+		[[nodiscard]]
+		String ComputerName();
+
+		/// @brief プログラムを実行しているユーザ名を返します。
+		/// @return プログラムを実行しているユーザ名
+		[[nodiscard]]
+		String UserName();
+
+		/// @brief プログラムを実行しているユーザのフルネームを返します。
+		/// @return プログラムを実行しているユーザのフルネーム
+		[[nodiscard]]
+		String FullUserName();
+
+		/// @brief プログラムを実行しているユーザのデフォルトのロケールを返します。
+		/// @return プログラムを実行しているユーザのデフォルトのロケール
+		[[nodiscard]]
+		String DefaultLocale();
+
+		/// @brief プログラムを実行しているユーザのデフォルト言語を返します。
+		/// @return プログラムを実行しているユーザのデフォルト言語
+		[[nodiscard]]
+		String DefaultLanguage();
+
+		/// @brief 指定したファイルをデフォルトのアプリケーションで開きます。 | Opens the specified file with the default application.
+		/// @param fileName ファイル名 | File name
+		/// @return アプリケーションの起動に成功した場合 true, それ以外の場合は false | Returns true if the application was launched successfully, otherwise false.
+		bool LaunchFile(FilePathView fileName);
+
+		/// @brief 指定したファイルをテキストエディタで開きます。 | Opens the specified file with the default text editor.
+		/// @param fileName ファイル名 | File name
+		/// @return テキストエディタの起動に成功した場合 true, それ以外の場合は false | Returns true if the text editor was launched successfully, otherwise false.
+		bool LaunchFileWithTextEditor(FilePathView fileName);
 	}
 
 # if SIV3D_PLATFORM(WEB)

@@ -2,8 +2,8 @@
 //
 //	This file is part of the Siv3D Engine.
 //
-//	Copyright (c) 2008-2022 Ryo Suzuki
-//	Copyright (c) 2016-2022 OpenSiv3D Project
+//	Copyright (c) 2008-2023 Ryo Suzuki
+//	Copyright (c) 2016-2023 OpenSiv3D Project
 //
 //	Licensed under the MIT License.
 //
@@ -16,6 +16,11 @@ namespace s3d
 	template <class Type>
 	inline constexpr Optional<Type>::Optional(None_t)
 		: base_type{ std::nullopt } {}
+
+	template <class Type>
+	template <class U>
+	inline Optional<Type>::Optional(Optional<U>&& other) noexcept(std::is_nothrow_constructible_v<Type, U>)
+		: base_type{ std::move(other) } {}
 
 	template <class Type>
 	inline Optional<Type>& Optional<Type>::operator =(None_t) noexcept

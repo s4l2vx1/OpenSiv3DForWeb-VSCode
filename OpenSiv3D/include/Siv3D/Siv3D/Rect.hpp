@@ -2,8 +2,8 @@
 //
 //	This file is part of the Siv3D Engine.
 //
-//	Copyright (c) 2008-2022 Ryo Suzuki
-//	Copyright (c) 2016-2022 OpenSiv3D Project
+//	Copyright (c) 2008-2023 Ryo Suzuki
+//	Copyright (c) 2016-2023 OpenSiv3D Project
 //
 //	Licensed under the MIT License.
 //
@@ -682,6 +682,12 @@ namespace s3d
 		[[nodiscard]]
 		constexpr Quad shearedY(double vy) const noexcept;
 
+		[[nodiscard]]
+		Quad skewedX(double angle) const noexcept;
+
+		[[nodiscard]]
+		Quad skewedY(double angle) const noexcept;
+
 		/// @brief 角を丸めた RoundRect を作成して返します。
 		/// @param r 角の半径
 		/// @return 作成した RoundRect
@@ -815,6 +821,20 @@ namespace s3d
 		/// @return *this
 		const Rect& draw(Arg::left_<ColorF> leftColor, Arg::right_<ColorF> rightColor) const;
 
+		/// @brief 長方形を描画します。
+		/// @param topLeftColor 長方形の左上の色
+		/// @param bottomRightColor 長方形の右下の色
+		/// @remark `rect.draw(Arg::topLeft = ColorF{ 0.0 }, Arg::bottomRight = ColorF{ 1.0 })` のように呼びます。
+		/// @return *this
+		const Rect& draw(Arg::topLeft_<ColorF> topLeftColor, Arg::bottomRight_<ColorF> bottomRightColor) const;
+
+		/// @brief 長方形を描画します。
+		/// @param topRightColor 長方形の右上の色
+		/// @param bottomLeftColor 長方形の左下の色
+		/// @remark `rect.draw(Arg::topRight = ColorF{ 0.0 }, Arg::bottomLeft = ColorF{ 1.0 })` のように呼びます。
+		/// @return 
+		const Rect& draw(Arg::topRight_<ColorF> topRightColor, Arg::bottomLeft_<ColorF> bottomLeftColor) const;
+
 		/// @brief 長方形の枠を描画します。
 		/// @param thickness 枠の太さ
 		/// @param color 色
@@ -860,11 +880,12 @@ namespace s3d
 
 		/// @brief 長方形の影を描画します。
 		/// @param offset 影の位置のオフセット（ピクセル）
-		/// @param blurRadius 影のぼかし半径（ピクセル）
+		/// @param blur ぼかしの大きさ（ピクセル）
 		/// @param spread 影の膨張（ピクセル）
 		/// @param color 影の色
+		/// @param fill 影の内部を塗りつぶすか
 		/// @return *this
-		const Rect& drawShadow(const Vec2& offset, double blurRadius, double spread = 0.0, const ColorF& color = ColorF{ 0.0, 0.5 }) const;
+		const Rect& drawShadow(const Vec2& offset, double blur, double spread = 0.0, const ColorF& color = ColorF{ 0.0, 0.5 }, bool fill = true) const;
 
 		[[nodiscard]]
 		TexturedQuad operator ()(const Texture& texture) const;

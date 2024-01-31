@@ -2,8 +2,8 @@
 //
 //	This file is part of the Siv3D Engine.
 //
-//	Copyright (c) 2008-2022 Ryo Suzuki
-//	Copyright (c) 2016-2022 OpenSiv3D Project
+//	Copyright (c) 2008-2023 Ryo Suzuki
+//	Copyright (c) 2016-2023 OpenSiv3D Project
 //
 //	Licensed under the MIT License.
 //
@@ -139,6 +139,12 @@ namespace s3d
 		[[nodiscard]]
 		constexpr Point operator /(Point p) const noexcept;
 
+		[[nodiscard]]
+		constexpr Point operator %(int32 s) const noexcept;
+
+		[[nodiscard]]
+		constexpr Point operator %(Point p) const noexcept;
+
 		template <class Type>
 		[[nodiscard]]
 		constexpr Vector2D<Type> operator /(Vector2D<Type> v) const noexcept;
@@ -150,6 +156,8 @@ namespace s3d
 		constexpr Point& operator *=(int32 s) noexcept;
 
 		constexpr Point& operator /=(int32 s) noexcept;
+
+		constexpr Point& operator %=(int32 s) noexcept;
 
 		[[nodiscard]]
 		friend constexpr bool operator ==(Point lhs, Point rhs) noexcept
@@ -280,6 +288,30 @@ namespace s3d
 		/// @return 幅 x, 高さ y の長方形の面積
 		[[nodiscard]]
 		constexpr int32 area() const noexcept;
+
+		/// @brief 時計回りに 90°* n 回転した座標を返します。
+		/// @param n 時計回りに 90° 回転させる回数（負の場合は反時計回り）
+		/// @return 時計回りに 90°* n 回転した座標
+		[[nodiscard]]
+		constexpr Point rotated90(int32 n = 1) const noexcept;
+
+		/// @brief 自身を時計回りに 90°* n 回転します。
+		/// @param n 時計回りに 90° 回転させる回数（負の場合は反時計回り）
+		/// @return *this
+		constexpr Point& rotate90(int32 n = 1) noexcept;
+
+		/// @brief centerを中心とし、時計回りに 90°* n 回転した座標を返します。
+		/// @param center 回転の中心座標
+		/// @param n 時計回りに 90° 回転させる回数（負の場合は反時計回り）
+		/// @return centerを中心とし、時計回りに 90°* n 回転した座標
+		[[nodiscard]]
+		constexpr Point rotated90At(Point center, int32 n = 1) const noexcept;
+
+		/// @brief centerを中心とし、自身を時計回りに 90°* n 回転します。
+		/// @param center 回転の中心座標
+		/// @param n 時計回りに 90° 回転させる回数（負の場合は反時計回り）
+		/// @return *this
+		constexpr Point& rotate90At(Point center, int32 n = 1) noexcept;
 
 		template <class Type = double>
 		[[nodiscard]]
